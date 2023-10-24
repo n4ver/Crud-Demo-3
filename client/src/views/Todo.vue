@@ -40,10 +40,10 @@
       })
 
       function getTodo(id) {
-        const res = axios.get('http://localhost:8081/api/v1/todo/' + id);
-        console.log(res);
-        console.log(res.data);
-        return res.data.todo;
+        axios.get('http://localhost:8081/api/v1/todo/' + id)
+        .then((res) =>{
+          return res.data;
+        })
       }
 
       function submit() {
@@ -59,17 +59,20 @@
 
       function addNewTodo() {
         const newId = uuidv4()
+        let newTodo;
         axios.post('http://localhost:8081/api/v1/todo', {
-            id: newId,
-            title: newTitle.value,
-            isDone: false,
-            content: newContent.value
+          id: newId,
+          title: newTitle.value,
+          isDone: false,
+          content: newContent.value
+        }).then(() => {
+          newTodo = getTodo(newId);
+          todos.value.push(newTodo);
+          console.log(todos.value);
         })
         //Flush variables
         newTitle.value = '';
         newContent.value = '';
-        
-        todos.value.push(getTodo(newId));
       }
   
       function toggleDone(todo) {
