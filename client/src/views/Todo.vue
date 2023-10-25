@@ -4,17 +4,16 @@
     <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <form class="space-y-4 md:space-y-6" @submit.prevent="addNewTodo">
         <label class="items-center text-xl leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Create New Todo</label>
-        <input v-model="newTitle" name="newTitle" placeholder="Title" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required pattern="^[a-zA-Z0-9]{5,100}$">
-        <input v-model="newContent" name="newContent" placeholder="Your text here..." class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" pattern="^[a-zA-Z0-9]{0,500}$">
+        <input v-model="newTitle" name="newTitle" placeholder="Title" class="items-center w-11/12 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required pattern="^[a-zA-Z0-9]{5,100}$">
+        <input v-model="newContent" name="newContent" placeholder="Your text here..." class="items-center w-11/12 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" pattern="^[a-zA-Z0-9]{0,500}$">
         <button type="submit" @click="submit">Add New Todo</button>
       </form>
     </div>
     <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-      <ul class="flex flex-col">
-        <li v-for="(todo, index) in todos" :key="todo.id"  class="flex-row" id="todo">
-          <h3 class="flex-auto" :class="{ done: todo.isDone }" @click="toggleDone(todo)">{{ index + 1 }}. {{todo.title}}</h3>
+      <ul>
+        <li v-for="(todo, index) in todos" :key="todo.id"  class="flex flex-row flex-nowrap" id="todo">
+          <h3 class="flex-grow" :class="{ done: todo.isDone }" @click="toggleDone(todo)">{{ index + 1 }}. {{todo.title}}</h3>
           <button class="flex-none" @click="removeTodo(todo)">Remove</button>
-          <button class="flex-none" @click="toggleDone(todo)">Toggle Done</button>
           <button class="flex-none" @click="$router.push('/todo/' + todo.id)">View</button>
         </li>
       </ul>
@@ -141,7 +140,6 @@
   }
   input, textarea, button, p, div, section, article, select {
     display: 'block';
-    width: 100%;
     font-size: 1em;
     margin: 0.5em;
   }
