@@ -29,7 +29,7 @@ export default {
 
 <template>
     <div>
-    <main class="mb-auto">
+    <main class="mb-auto justify-center">
         <div class="p-4 mx-auto max-w-screen-md text-center">
             <p class="my-6 text-gray-900 md:text-2xl dark:text-white" >
                 TO DO OR NOT TO DO
