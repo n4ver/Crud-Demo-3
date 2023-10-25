@@ -21,6 +21,8 @@ npx sequelize-cli db:seed:all
 ```
 cd /client
 npm run serve
-cd /../server
+```
+```
+cd /server
 npm start
 ```
