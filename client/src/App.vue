@@ -24,7 +24,14 @@ export default {
 }
 </script>
 
+<style>
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+</style>
+
 <style scoped>
+
 main {
     -webkit-flex: 1 0 0; /* Safari 6.1+ */
     -ms-flex: 1 0 0; /* IE 10 */
