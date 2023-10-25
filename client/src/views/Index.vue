@@ -1,7 +1,9 @@
 <script setup>
-// import Navbar from '../components/Navbar.vue'
-// import Footer from '../components/Footer.vue'
-// import axios from 'axios'
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  document.title = 'Todo';
+  });
 </script>
 
 <script>
