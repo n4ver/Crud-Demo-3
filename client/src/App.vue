@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" >
     <body>
       <Navbar/>
       <main class="bg-gray-50 dark:bg-gray-900">
-      <router-view ></router-view>
+      <router-view class="my-6 text-gray-900 md:text-2xl dark:text-white" ></router-view>
       </main>
       <Footer/>
     </body>

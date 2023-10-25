@@ -1,9 +1,11 @@
 <template>
+  <div class="my-6 text-gray-900 md:text-2xl dark:text-white">
     <h1>{{ todo.title }}</h1>
     <button @click="removeOneTodo">Remove </button>
     <button @click="markOneDone">Mark Done</button>
     <p>{{ todo.content }}</p>
     <button @click="$router.push('/todo/edit/' + todo.id)">Edit</button>
+  </div>
   </template>
 <script>
   import { ref, onMounted } from 'vue';

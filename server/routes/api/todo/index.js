@@ -26,14 +26,20 @@ async function routes(fastify, options) {
     fastify.put('/edit/:id', async (req, res) => {
         const { id } = req.params;
         const { body } = req;
-        const todo = await Todo.findByPk(id);
-        todo.set({
+        console.log(body);
+        console.log(id);
+        Todo.update({
             title: body.title._value,
-            content: body.content._value
+            content: body.content._value,
+            isDone: body.isDone._value
+        },
+        {
+            where: {
+                id: id
+            }
         });
-        todo.save();
-        //const todo = await Todo.update({ })
-    }),
+        }
+    )    
     //delete one
     fastify.delete('/delete/:id', async (req, res) => {
         const { id } = req.params;
