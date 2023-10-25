@@ -27,7 +27,6 @@ async function routes(fastify, options) {
         const { id } = req.params;
         const { body } = req;
         console.log(body);
-        console.log(id);
         Todo.update({
             title: body.title._value,
             content: body.content._value,

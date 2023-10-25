@@ -4,16 +4,18 @@
     <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <form class="flex flex-col items-center space-y-4 md:space-y-6" @submit.prevent="addNewTodo">
         <label class="text-center justify-center items-center text-xl leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Create New Todo</label>
-        <input v-model="newTitle" name="newTitle" placeholder="Title (MAX 50 characters)" class="flex-1 items-center bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required pattern="^[a-zA-Z0-9 ]{5,100}$">
-        <input v-model="newContent" name="newContent" placeholder="Your text here... (MAX 500 characters)" class=" space-x-4 flex-1 tems-center bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" pattern="^[a-zA-Z0-9 ]{0,500}$">
-        <button class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4" type="submit" @click="submit()">Add New Todo</button>
+        <input v-model="newTitle" name="newTitle" placeholder="Title (MAX 50 characters)" class="flex-1 items-center bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required pattern="^[a-zA-Z0-9 ]{5,100}$">
+        <input v-model="newContent" name="newContent" placeholder="Your text here... (MAX 500 characters)" class="flex-1 tems-center bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" pattern="^[a-zA-Z0-9 ]{0,500}$">
+        <div class="inline-flex text-white font-medium text-sm">
+          <button class="bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4" type="submit" @click="submit()">Add New Todo</button>
+        </div>
       </form>
     </div>
     <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700">
       <ul>
         <li v-for="(todo, index) in todos" :key="todo.title"  class="flex flex-row flex-nowrap">
           <div class="flex-grow md:justify-center ">
-            <h3 class="text-justify ml-2 items-center justify-center" :class="{ done: todo.isDone }" @click="toggleDone(todo)">{{ index + 1 }}. {{todo.title}}</h3>
+            <h3 class="text-justify ml-2 items-center justify-center" :class="{ done: todo.isDone }">{{ index + 1 }}. {{todo.title}}</h3> <!-- @click="toggleDone(todo)" -->
           </div>
           <button class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4" @click="$router.push('/todo/' + todo.id)">View</button>
           <button class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" @click="removeTodo(todo)">Remove</button>
@@ -96,11 +98,11 @@ export default {
       })
   }
 
-    function toggleDone(todo) {
+    /* function toggleDone(todo) {
       console.log('Toggling from:', todo.isDone);
       todo.isDone = !todo.isDone;
       updateTodoDone(todo);
-    }
+    } */
 
     function removeTodo(todo) {
       axios.delete('http://localhost:8081/api/v1/todo/delete/' + todo.id);
@@ -114,7 +116,7 @@ export default {
       updateTodoDone,
       submit,
       addNewTodo,
-      toggleDone,
+      // toggleDone,
       removeTodo
     };
   }
