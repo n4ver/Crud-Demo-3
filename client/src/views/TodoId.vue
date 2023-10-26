@@ -36,7 +36,7 @@
 
       function removeTodo() {
         //todos.value.splice(index, 1);
-        axios.delete('http://localhost:8081/api/v1/todo/delete/' + route.param.id);
+        axios.delete('http://localhost:8081/api/v1/todo/delete/' + route.params.id);
       }
 
       return {
